@@ -13,16 +13,23 @@ const NavBar = ()=>{
         // console.log(data)
         rex()
     },[])
+    const deleteD = async(id)=>{
+      await axios.post(`http://localhost:5000/del/${id}`).then(()=>{
+        window.location.reload(false);
+      })
+    }
     console.log(dataa)
     return(
         <div>
-        <table>
+        <table border={2}>
           {dataa.map((val, key) => (
             <tr
               key={key}
             >
+                <td>{val._id}</td>
                 <td>{val.name}</td>
                 <td>{val.count}</td>
+                <td><button onClick={()=>{deleteD(val._id)}}>DELETE</button></td>
             </tr>    
           ))}
         </table>  
