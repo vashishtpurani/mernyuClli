@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 const NavBar = ()=>{
+    const navigate = useNavigate()
     const [dataa,setData] = useState([])
     useEffect(()=>{
         const rex = async()=>{
@@ -18,6 +20,18 @@ const NavBar = ()=>{
         window.location.reload(false);
       })
     }
+    const UpD =(id,name,count)=>{
+        
+        // sessionStorage.removeItem("id")
+        // sessionStorage.removeItem("name")
+        // sessionStorage.removeItem("count")
+
+        sessionStorage. setItem("id",id)
+        sessionStorage.setItem("name",name)
+        sessionStorage.setItem("count",count)
+        localStorage.removeItem("updt")        
+        navigate("/up")
+    }
     console.log(dataa)
     return(
         <div>
@@ -30,6 +44,7 @@ const NavBar = ()=>{
                 <td>{val.name}</td>
                 <td>{val.count}</td>
                 <td><button onClick={()=>{deleteD(val._id)}}>DELETE</button></td>
+                <td><button onClick={()=>{UpD(val._id,val.name,val.count)}}>UPDATE</button></td>
             </tr>    
           ))}
         </table>  

@@ -12,9 +12,6 @@ const CreateD=()=>{
             console.log(data)
         })
    }
-   const upDD = (id) =>{
-        sessionStorage.setItem(id,"id")
-   }
     return(
         <>
             <form>
@@ -26,8 +23,7 @@ const CreateD=()=>{
                 <input type="text" value={data.count} onChange={(event)=>{
                     setData({...data,count:event.target.value})
                 }}/>    
-                <button onClick={createDD}>BIG</button>                   
-                <button onClick={upDD}>Update</button>                   
+                <button onClick={createDD}>BIG</button>                                    
             </form  >
         </>
     )
